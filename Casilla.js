@@ -1,24 +1,28 @@
-class Casilla extends Tablero{
-    constructor(x, y, mina,marcada, revelada, bandera, minasAdyacentes){
-        this.x= x;
-        this.y= y;
-        this.mina= mina;
-        this.marcada= marcada;
-        this.revelada= revelada;
-        this.bandera= bandera;
-        this.minasAdyacentes= minasAdyacentes;
+export class Casilla {
+    constructor(x, y, mina) {
+        this.x = x;
+        this.y = y;
+        this.mina = mina;
+        this.marcada = false;
+        this.revelada = false;
+        this.bandera = false;
+        this.minasAdyacentes = 0;
     }
 
-    revelar(){
+    revelar() {
+        if (this.revelada || this.marcada) return null;
 
+        this.revelada = true;
+
+        if (this.mina) return false;
+
+        return true;
     }
 
-    marcar(){
-
-    }
-
-    ponerMina(){
-
+    marcar() {
     }
     
+    ponerMina() {
+        this.mina = true;
+    }
 }

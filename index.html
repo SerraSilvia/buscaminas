@@ -1,65 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Buscaminas</title>
-  </head>
-  <body>
-    <section>
-      <h2>Formulario de inicio:</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="main.css" type="text/css" rel="stylesheet">
+  <title>Buscaminas</title>
 
-      <form id="formInicio" name="formInicio">
-        <ul>
-          <li>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" maxlength="20" />
-          </li>
+  <script type="module">
+    import { init } from "./script.js";
+    window.carregaModul = init;
+  </script>
 
-          <li>
-            <label for="apellido">Apellido:</label>
-            <input
-              type="text" id="apellido" name="apellido" maxlength="30" />
-          </li>
+</head>
+<body onload="carregaModul()">
+  <section id="formularioJuego">
+    <h2>Formulario de inicio:</h2>
 
-          <li>
-            <label for="nick">Elige tu nickname:</label>
-            <input type="text" id="nick" name="nick" maxlength="20" />
-          </li>
-
-          <li>
-            <label for = "fechaNacimiento">Fecha de nacimiento</label>
-            <input type = "date" id = "fechaP" name = "fechaNacimiento" onClick="event.preventDefault()" placeholder="dd-mm-yyyy" >
-          </li>
-
-            <li>
-          <label for="mail">Dirección de correo electrónico </label>
-          <input type="email" id="mail" name="email">
+    <form id="formInicio" name="formInicio">
+      <ul>
+        <li>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" maxlength="20" required />
         </li>
 
-          <li>
-            <label for="rows">¿Cuántas filas te gustaría tener?</label>
-            <input type="number" id="rows" name="rows" value="5" min="5" max="10" />
-          </li>
+        <li>
+          <label for="apellido">Apellido:</label>
+          <input type="text" id="apellido" name="apellido" maxlength="30" required />
+        </li>
 
-          <li>
-            <label for="columns">¿Cuántas columnas te gustaría tener?</label>
-            <input type="number" id="columns" name="columns" value="5" min="5" max="10" />
+        <li>
+          <label for="nick">Elige tu nickname:</label>
+          <input type="text" id="nick" name="nick" maxlength="20" required />
+        </li>
 
-            <li>
-                <label for="bombs">¿Cuántas bombas te gustaría tener?</label>
-                <input type="number" id="bombs" name="bombs" value="5" min="5" max="10" />
-              </li>
-          </li>
+        <li>
+          <label for="fechaNacimiento">Fecha de nacimiento</label>
+          <input type="date" id="fechaNacimiento" name="fechaNacimiento" required />
+        </li>
 
-          <li>
-            <!-- puntuacion a implementar -->
-            <!-- contraseña a implementar -->
-          </li>
-        </ul>
+        <li>
+          <label for="email">Dirección de correo electrónico </label>
+          <input type="email" id="email" name="email" required />
+        </li>
 
-        <button>Enviar</button>
-      </form>
-    </section>
-  </body>
+        <li>
+          <label for="filas">¿Cuántas filas te gustaría tener?</label>
+          <input type="number" id="filas" name="filas" value="5" min="5" max="15" required />
+        </li>
+
+        <li>
+          <label for="columnas">¿Cuántas columnas te gustaría tener?</label>
+          <input type="number" id="columnas" name="columnas" value="5" min="5" max="15" required />
+        </li>
+
+        <li>
+          <label for="bombas">¿Cuántas bombas te gustaría tener?</label>
+          <input type="number" id="bombas" name="bombas" value="10" min="10" max="20" required />
+        </li>
+      </ul>
+      
+      <button type="button" id="botonGenerar" class="botonGenerar">Jugar</button>
+    </form>
+
+    <div class="juegoInicio">
+      <!-- <h2>Banderas colocadas: <span id="num-banderas"></span> (faltan <span id="banderas-restantes"></span>)</h2>-->
+      <div id="juego" class="juego hidden">
+        <!-- Aqui va el table del juego -->
+      </div>
+      <div class="resultado-juego"></div>
+    </div>
+
+  </section>
+</body>
 </html>
